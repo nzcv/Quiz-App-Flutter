@@ -1,8 +1,7 @@
 name: ci
 on:
   push:
-    branches: 
-      - main
+    branches: master      
     paths-ignore:
       - README.md
       - README_CN.md
