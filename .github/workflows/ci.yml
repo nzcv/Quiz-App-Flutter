@@ -11,6 +11,8 @@ on:
       - README.md
       - README_CN.md
       - LICENSE
+env:
+  FLUTTER_VERSION: '2.10.5'  # 指定一个在你SDK约束范围内的稳定版本，例如 2.10.5
 
 jobs:
   build-android:
@@ -18,15 +20,12 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2  # 使用 v2 版本的 Flutter action
         with:
-          channel: stable      
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: zulu
-          java-version: 21      
+          flutter-version: ${{ env.FLUTTER_VERSION }}  # 使用环境变量中定义的版本
+          cache: true                 # 启用缓存以加速后续构建
+          cache-key: flutter-${{ runner.os }}-${{ env.FLUTTER_VERSION }}    
       - name: Build Flutter application for Android
         run: flutter build apk --split-per-abi
       - name: Rename armeabi-v7a APK
