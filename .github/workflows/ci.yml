@@ -12,7 +12,7 @@ on:
       - README_CN.md
       - LICENSE
 env:
-  FLUTTER_VERSION: '2.10.5'  # 指定一个在你SDK约束范围内的稳定版本，例如 2.10.5
+  FLUTTER_VERSION: '2.7.0'  # 指定一个在你SDK约束范围内的稳定版本，例如 2.10.5
 
 jobs:
   build-android:
