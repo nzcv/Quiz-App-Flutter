@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: zulu
-          java-version: 8
+          java-version: 11
       - name: Build Flutter application for Android
         run: flutter build apk --split-per-abi
       - name: Rename armeabi-v7a APK
