@@ -27,27 +27,13 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: zulu
-          java-version: 11
+          java-version: 8
       - name: Build Flutter application for Android
-        run: flutter build apk --split-per-abi
-      - name: Rename armeabi-v7a APK
-        run: mv build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk android-armeabi-v7a.apk
+        run: flutter build apk --target-platform=android-arm64
       - name: Rename arm64-v8a APK
-        run: mv build/app/outputs/flutter-apk/app-arm64-v8a-release.apk android-arm64-v8a.apk
-      - name: Rename x86_64 APK
-        run: mv build/app/outputs/flutter-apk/app-x86_64-release.apk android-x86_64.apk
-      - name: Upload armeabi-v7a APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-armeabi-v7a.apk
-          path: android-armeabi-v7a.apk
+        run: mv build/app/outputs/flutter-apk/app-arm64-v8a-release.apk android-arm64-v8a.apk      
       - name: Upload arm64-v8a APK
         uses: actions/upload-artifact@v4
         with:
           name: android-arm64-v8a.apk
-          path: android-arm64-v8a.apk
-      - name: Upload x86_64 APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-x86_64.apk
-          path: android-x86_64.apk
+          path: android-arm64-v8a.apk      
